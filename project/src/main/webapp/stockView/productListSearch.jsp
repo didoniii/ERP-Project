@@ -32,6 +32,11 @@
 					.setAttribute(
 							'style',
 							'background: #f8f7f2; color: #000; box-shadow: 0 -0.15rem 0.15rem #505050; z-index: 1;');
+			/* 
+			if('${searchField}' != null) {
+				search.searchField.
+			}
+			 */
 		}
 
 	};

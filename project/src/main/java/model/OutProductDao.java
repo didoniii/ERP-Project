@@ -36,12 +36,7 @@ public class OutProductDao {
 		ResultSet rs = null;
 		Connection conn = getConnection();
 
-		String sql = "select * from (select rowNum rn, a.* from" 
-				+ "(select so.sales_order_date, c.customer_no, c.customer_name, p.product_no, p.product_name, p.price, sod.sales_detail_pcount\r\n"
-				+ "from sales_order so, customer c, product p, sales_order_detail sod\r\n"
-				+ "where c.customer_no = so.customer_no and so.sales_order_no = sod.sales_oreder_no\r\n"
-				+ "and c.emp_no = so.emp_no and sod.product_no = p.product_no)a )\r\n"
-				+ "where rn between ? and ?";
+		String sql = "select * from out_product_list where rn between ? and ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
@@ -84,11 +79,7 @@ public class OutProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Connection conn = getConnection();
-		String sql = "select count(*) from"
-				+ "(select so.sales_order_date, c.customer_no, c.customer_name, p.product_no, p.product_name, p.price, sod.sales_detail_pcount\r\n"
-				+ "from sales_order so, customer c, product p, sales_order_detail sod\r\n"
-				+ "where c.customer_no = so.customer_no and so.sales_order_no = sod.sales_oreder_no\r\n"
-				+ "and c.emp_no = so.emp_no and sod.product_no = p.product_no)";
+		String sql = "select count(*) from out_product_list";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -109,19 +100,18 @@ public class OutProductDao {
 	
 		
 	
-	public List<OutProduct> getSearch(int startRow, int endRow, String searchField, String keyword) {
+	public List<OutProduct> getSearch(int startRow, int endRow, String s_date, String e_date, String searchField, String keyword) {
 		List<OutProduct> getSearch = new ArrayList<OutProduct>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Connection conn = getConnection();
-
-		String sql = "select * from (select rowNum rn, a.* from" 
-				+ "(select so.sales_order_date, c.customer_no, c.customer_name, p.product_no, p.product_name, p.price, sod.sales_detail_pcount"
-				+ " from sales_order so, customer c, product p, sales_order_detail sod"
-				+ " where c.customer_no = so.customer_no and so.sales_order_no = sod.sales_oreder_no"
-				+ " and c.emp_no = so.emp_no and sod.product_no = p.product_no"
-				+ " and "+searchField.trim()+" like '%"+keyword.trim()+"%')a )"
+		
+		String sql = "select * from (select rowNum rn, a.* from (select * from out_product_search" 
+				+ " where "+searchField.trim()+" like '%"+keyword.trim()+"%' "
+				+ " and sales_order_date between to_date('"+s_date+"', 'yyyy-mm-dd') and to_date('"+e_date+"', 'yyyy-mm-dd')+1 ) a )"
 				+ " where rn between ? and ?";
+
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
@@ -161,17 +151,16 @@ public class OutProductDao {
 	
 	
 	
-	public int getTotal2(String searchField, String keyword) {
+	public int getTotal2(String s_date, String e_date, String searchField, String keyword) {
 		int total2 = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Connection conn = getConnection();
-		String sql = "select count(*) from"
-				+ "(select so.sales_order_date, c.customer_no, c.customer_name, p.product_no, p.product_name, p.price, sod.sales_detail_pcount"
-				+ " from sales_order so, customer c, product p, sales_order_detail sod"
-				+ " where c.customer_no = so.customer_no and so.sales_order_no = sod.sales_oreder_no"
-				+ " and c.emp_no = so.emp_no and sod.product_no = p.product_no"
-				+ " and " +searchField.trim() +" like '%"+keyword.trim()+"%')";
+		
+		String sql =  "select count(*) from (select * from out_product_search"
+				+ " where "+searchField.trim()+" like '%"+keyword.trim()+"%' "
+				+ " and sales_order_date between to_date('"+s_date+"', 'yyyy-mm-dd') and to_date('"+e_date+"', 'yyyy-mm-dd')+1 )";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

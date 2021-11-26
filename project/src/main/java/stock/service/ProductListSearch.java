@@ -19,7 +19,7 @@ public class ProductListSearch implements CommandProcess {
 			pageNum = "1";
 		
 		int currentPage = Integer.parseInt(pageNum);
-		
+		//검색카테고리, 검색어 가져오기
 		String searchField = request.getParameter("searchField");
 		String keyword = request.getParameter("keyword");
 		
@@ -39,8 +39,8 @@ public class ProductListSearch implements CommandProcess {
 		if (endPage > totalPage)
 			endPage = totalPage;
 		
-		String[] searchEn = {"p.product_no", "p.product_name"};
-		String[] searchKr = {"상품코드", "상품명"};
+		String[] searchEn = {"product_no", "product_name"};
+		String[] searchKr = {"상품코드","상품명"};
 		String searchFiledKr ="";
 		for (int i =0 ; i < searchEn.length;i++) {
 			if (searchField.equals(searchEn[i])) {
@@ -48,7 +48,6 @@ public class ProductListSearch implements CommandProcess {
 				break;
 			}
 		}
-		
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("PAGE_PER_BLOCK", PAGE_PER_BLOCK);
 		request.setAttribute("startPage", startPage);
@@ -59,7 +58,6 @@ public class ProductListSearch implements CommandProcess {
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("getSearch", getSearch);
 		
-		System.out.println("카테고리" + searchFiledKr);
 		
 		return "/stockView/productListSearch.jsp";
 }

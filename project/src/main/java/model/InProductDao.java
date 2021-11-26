@@ -36,12 +36,7 @@ public class InProductDao {
 		ResultSet rs = null;
 		Connection conn = getConnection();
 
-		String sql = "select * from (select rowNum rn, a.* from " 
-				+ "(select po.purchase_order_date, s.seller_no, s.seller_name, p.product_no, p.product_name, p.cost, pod.purchase_detail_pcount\r\n"
-				+ "from purchase_order po, seller s, product p, purchase_order_detail pod\r\n"
-				+ "where s.seller_no = po.seller_no and s.emp_no = po.emp_no\r\n"
-				+ "and po.purchase_order_no = pod.purchase_order_no and pod.product_no = p.product_no )a )\r\n"
-				+ "where rn between ? and ?";
+		String sql = "select * from in_product_list where rn between ? and ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
@@ -84,13 +79,7 @@ public class InProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Connection conn = getConnection();
-		String sql = "select count(*) from "
-				+ "(select po.purchase_order_date, s.seller_no, s.seller_name, p.product_no, p.product_name, p.cost, pod.purchase_detail_pcount\r\n"
-				+ "from purchase_order po, seller s, product p, purchase_order_detail pod\r\n"
-				+ "where s.seller_no = po.seller_no\r\n"
-				+ "and s.emp_no = po.emp_no\r\n"
-				+ "and po.purchase_order_no = pod.purchase_order_no\r\n"
-				+ "and pod.product_no = p.product_no)";
+		String sql = "select count(*) from in_product_list";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -109,19 +98,18 @@ public class InProductDao {
 		return total;
 	}
 		
-		public List<InProduct> getSearch(int startRow, int endRow, String searchField, String keyword) {
+		public List<InProduct> getSearch(int startRow, int endRow, String s_date, String e_date, String searchField, String keyword) {
 			List<InProduct> getSearch = new ArrayList<InProduct>();
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			Connection conn = getConnection();
-
-			String sql = "select * from (select rowNum rn, a.* from " 
-					+ "(select po.purchase_order_date, s.seller_no, s.seller_name, p.product_no, p.product_name, p.cost, pod.purchase_detail_pcount"
-					+ " from purchase_order po, seller s, product p, purchase_order_detail pod"
-					+ " where s.seller_no = po.seller_no and s.emp_no = po.emp_no"
-					+ " and po.purchase_order_no = pod.purchase_order_no and pod.product_no = p.product_no"
-					+ " and "+searchField.trim()+" like '%"+keyword.trim()+"%' )a )"
-					+ " where rn between ? and ?";
+			
+			String sql = "select * from (select rowNum rn, a.* from (select * from in_product_search" 
+					+ " where "+searchField.trim()+" like '%"+keyword.trim()+"%' "
+					+ " and purchase_order_date between to_date('"+s_date+"', 'yyyy-mm-dd') and to_date('"+e_date+"', 'yyyy-mm-dd')+1 ) a )"
+					+ " where rn between ? and ?"; 
+			
+			System.out.println("sql =" +sql);
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, startRow);
@@ -160,17 +148,16 @@ public class InProductDao {
 		
 		
 		
-		public int getTotal2(String searchField, String keyword) {
+		public int getTotal2( String s_date, String e_date, String searchField, String keyword) {
 			int total2 = 0;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			Connection conn = getConnection();
-			String sql = "select count(*) from "
-					+ "(select po.purchase_order_date, s.seller_no, s.seller_name, p.product_no, p.product_name, p.cost, pod.purchase_detail_pcount"
-					+ " from purchase_order po, seller s, product p, purchase_order_detail pod"
-					+ " where s.seller_no = po.seller_no and s.emp_no = po.emp_no"
-					+ " and po.purchase_order_no = pod.purchase_order_n and pod.product_no = p.product_no"
-					+ " and " +searchField.trim() +" like '%"+keyword.trim()+"%')";
+			
+			String sql =  "select count(*) from (select * from in_product_search"
+					+ " where "+searchField.trim()+" like '%"+keyword.trim()+"%' "
+					+ " and purchase_order_date between to_date('"+s_date+"', 'yyyy-mm-dd') and to_date('"+e_date+"', 'yyyy-mm-dd')+1 )";
+			
 			try {
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();

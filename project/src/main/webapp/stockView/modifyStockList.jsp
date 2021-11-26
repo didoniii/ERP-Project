@@ -69,13 +69,18 @@
 						action="/project/st/modifyStockListSearch.do">
 						<div class="search">
 							<div>
+								<input type="date" name="s_date" >
+								<div> ~ </div>
+								<input type="date" name="e_date" >
+							</div>
+							<div>
 								<select name="searchField">
 									<option value="0">선택</option>
-									<option value="s.seller_no">업체코드</option>
-									<option value="s.seller_name">업체명</option>
-									<option value="p.product_no">상품코드</option>
-									<option value="p.product_name">상품명</option>
-									<option value="pm.modified_memo">사유</option>
+									<option value="seller_no">업체코드</option>
+									<option value="seller_name">업체명</option>
+									<option value="product_no">상품코드</option>
+									<option value="product_name">상품명</option>
+									<option value="modified_memo">사유</option>
 								</select>
 							</div>
 

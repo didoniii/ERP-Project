@@ -25,6 +25,8 @@
 		
 			var tool = document.getElementsByClassName('tool');
 			tool[4].setAttribute('style', 'background: #f8f7f2; color: #000; box-shadow: 0 -0.15rem 0.15rem #505050; z-index: 1;');
+			/* var searchFieldName = '${searchField}'; */
+			/* search.searchField.querySelector('option[value=${searchField}]').setAttribute('selected', 'selected'); */
 		}
 	};
 </script>
@@ -71,12 +73,17 @@
 						action="/project/st/inProductListSearch.do">
 						<div class="search">
 							<div>
+								<input type="date" name="s_date" value="${s_date }" >
+								<div> ~ </div>
+								<input type="date" name="e_date" value="${e_date }" >
+							</div>
+							<div>
 								<select name="searchField">
-									<option value="${searchField}">${searchFiledKr}</option>
-									<option value="s.seller_no">업체코드</option>
-									<option value="s.seller_name">업체명</option>
-									<option value="p.product_no">상품코드</option>
-									<option value="p.product_name">상품명</option>
+								    <option value="${searchField}">${searchFiledKr}</option> 
+									<option value="seller_no">업체코드</option>
+									<option value="seller_name">업체명</option>
+									<option value="product_no">상품코드</option>
+									<option value="product_name">상품명</option>
 								</select>
 							</div>
 
@@ -126,19 +133,19 @@
 					
 					<div class="page">
 						<a href="/project/st/inProductListSearch.do?pageNum=${startPage - 1}
-						&searchField=${searchField}&keyword=${keyword}">&lt;</a>
+						&searchField=${searchField}&keyword=${keyword}&s_date=${s_date}&e_date=${e_date}">&lt;</a>
 						<c:forEach var="i" begin="${startPage}" end="${endPage}">
 							<c:if test="${pageNum == i}">
 								<b><a href="/project/st/inProductListSearch.do?pageNum=${i}
-								&searchField=${searchField}&keyword=${keyword}'">${i }</a></b>
+								&searchField=${searchField}&keyword=${keyword}&s_date=${s_date}&e_date=${e_date}'">${i}</a></b>
 							</c:if>
 							<c:if test="${pageNum != i}">							
 								<a href="/project/st/inProductListSearch.do?pageNum=${i}
-								&searchField=${searchField}&keyword=${keyword}">${i}</a>
+								&searchField=${searchField}&keyword=${keyword}&s_date=${s_date}&e_date=${e_date}">${i}</a>
 							</c:if>
 						</c:forEach>
 						<a href="/project/st/inProductListSearch.do?pageNum=${endPage + 1}
-						&searchField=${searchField}&keyword=${keyword}">&gt;</a>
+						&searchField=${searchField}&keyword=${keyword}&s_date=${s_date}&e_date=${e_date}">&gt;</a>
 					</div>
 				
 

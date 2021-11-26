@@ -69,13 +69,18 @@
 						action="/project/st/modifyStockListSearch.do">
 						<div class="search">
 							<div>
+								<input type="date" name="s_date" value="${s_date }" >
+								<div> ~ </div>
+								<input type="date" name="e_date" value="${e_date }" >
+							</div>
+							<div>
 								<select name="searchField">
 									<option value="${searchField}">${searchFiledKr}</option>
-									<option value="s.seller_no">업체코드</option>
-									<option value="s.seller_name">업체명</option>
-									<option value="p.product_no">상품코드</option>
-									<option value="p.product_name">상품명</option>
-									<option value="pm.modified_memo">사유</option>
+									<option value="seller_no">업체코드</option>
+									<option value="seller_name">업체명</option>
+									<option value="product_no">상품코드</option>
+									<option value="product_name">상품명</option>
+									<option value="modified_memo">사유</option>
 								</select>
 							</div>
 
@@ -129,19 +134,19 @@
 						
 					<div class="page">
 						<a href="/project/st/modifyStockListSearch.do?pageNum=${startPage - 1}
-						&searchField=${searchField}&keyword=${keyword}">&lt;</a>
+						&searchField=${searchField}&keyword=${keyword}&s_date=${s_date}&e_date=${e_date}">&lt;</a>
 						<c:forEach var="i" begin="${startPage}" end="${endPage}">
 							<c:if test="${pageNum == i}">
 								<b><a href="/project/st/modifyStockListSearch.do?pageNum=${i}
-								&searchField=${searchField}&keyword=${keyword}'">${i}</a></b>
+								&searchField=${searchField}&keyword=${keyword}&s_date=${s_date}&e_date=${e_date}">${i}</a></b>
 							</c:if>
 							<c:if test="${pageNum != i}">							
 								<a href="/project/st/modifyStockListSearch.do?pageNum=${i}
-								&searchField=${searchField}&keyword=${keyword}">${i}</a>
+								&searchField=${searchField}&keyword=${keyword}&s_date=${s_date}&e_date=${e_date}">${i}</a>
 							</c:if>
 						</c:forEach>
 						<a href="/project/st/modifyStockListSearch.do?pageNum=${endPage + 1}
-						&searchField=${searchField}&keyword=${keyword}">&gt;</a>
+						&searchField=${searchField}&keyword=${keyword}&s_date=${s_date}&e_date=${e_date}">&gt;</a>
 					</div>
 				
 

@@ -68,12 +68,17 @@
 						action="/project/st/outProductListSearch.do">
 						<div class="search">
 							<div>
+								<input type="date" name="s_date" >
+								<div> ~ </div>
+								<input type="date" name="e_date" >
+							</div>
+							<div>
 								<select name="searchField">
 									<option value="0">선택</option>
-									<option value="c.customer_no">업체코드</option>
-									<option value="c.customer_name">업체명</option>
-									<option value="p.product_no">상품코드</option>
-									<option value="p.product_name">상품명</option>
+									<option value="customer_no">업체코드</option>
+									<option value="customer_name">업체명</option>
+									<option value="product_no">상품코드</option>
+									<option value="product_name">상품명</option>
 								</select>
 							</div>
 
