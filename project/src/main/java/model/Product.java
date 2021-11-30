@@ -13,7 +13,6 @@ public class Product {
 	private Date product_modified_date;		//Product_modified	
 	private String emp_no;					//Product_modified
 	private int modified_stock;				//Product_modified
-	private int variance	;					////Product_modified: (현재고 - 기존재고)하면서 추가된 컬럼
 	private String modified_memo;			//Product_modified
 	private String keyword;
 
@@ -105,14 +104,6 @@ public class Product {
 
 	public void setModified_memo(String modified_memo) {
 		this.modified_memo = modified_memo;
-	}
-
-	public int getVariance() {
-		return variance;
-	}
-
-	public void setVariance(int variance) {
-		this.variance = variance;
 	}
 	
 	public String getKeyword() {

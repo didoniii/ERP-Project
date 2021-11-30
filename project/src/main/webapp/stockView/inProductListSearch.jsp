@@ -80,10 +80,10 @@
 							<div>
 								<select name="searchField">
 								    <option value="${searchField}">${searchFiledKr}</option> 
-									<option value="s.seller_no">업체코드</option>
-									<option value="s.seller_name">업체명</option>
-									<option value="p.product_no">상품코드</option>
-									<option value="p.product_name">상품명</option>
+									<option value="seller_no">업체코드</option>
+									<option value="seller_name">업체명</option>
+									<option value="product_no">상품코드</option>
+									<option value="product_name">상품명</option>
 								</select>
 							</div>
 
@@ -137,7 +137,7 @@
 						<c:forEach var="i" begin="${startPage}" end="${endPage}">
 							<c:if test="${pageNum == i}">
 								<b><a href="/project/st/inProductListSearch.do?pageNum=${i}
-								&searchField=${searchField}&keyword=${keyword}&s_date=${s_date}&e_date=${e_date}'">${i}</a></b>
+								&searchField=${searchField}&keyword=${keyword}&s_date=${s_date}&e_date=${e_date}">${i}</a></b>
 							</c:if>
 							<c:if test="${pageNum != i}">							
 								<a href="/project/st/inProductListSearch.do?pageNum=${i}

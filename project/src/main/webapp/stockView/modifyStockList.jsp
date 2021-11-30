@@ -76,11 +76,9 @@
 							<div>
 								<select name="searchField">
 									<option value="0">선택</option>
-									<option value="s.seller_no">업체코드</option>
-									<option value="s.seller_name">업체명</option>
-									<option value="p.product_no">상품코드</option>
-									<option value="p.product_name">상품명</option>
-									<option value="pm.modified_memo">사유</option>
+									<option value="product_no">상품코드</option>
+									<option value="product_name">상품명</option>
+									<option value="modified_memo">사유</option>
 								</select>
 							</div>
 
@@ -100,8 +98,6 @@
 					<table>
 						<tr>
 							<th>변경일</th>
-							<th>업체코드</th>
-							<th>업체명</th>
 							<th>상품코드</th>
 							<th>상품명</th>
 							<th>변동수량</th>
@@ -119,11 +115,9 @@
 							<c:forEach var="product" items="${modifyStockList}">
 								<tr>
 									<td>${product.product_modified_date}</td>
-									<td>${product.seller_no }</td>
-									<td>${product.seller_name }</td>
 									<td>${product.product_no }</td>
 									<td>${product.product_name }</td>
-									<td>${product.variance }</td>
+									<td>${product.modified_stock }</td>
 									<td>${product.modified_memo}</td>
 									<td>${product.emp_no}</td>
 								</tr>
