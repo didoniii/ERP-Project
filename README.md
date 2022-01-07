@@ -25,12 +25,19 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 1.	개발환경
 	
 	OS  :  MS Windows10
+
 	DB  :  Oracle 11g
+
 	Tool  :  Eclipse
+
 	Version  :  JDK 1.8
+
 	Server  :  Tomcat 9.0
+
 	Framework  :  Mybatis
+
 	Language  :  Java, JavaScript, html5/css3
+
 
 
 
