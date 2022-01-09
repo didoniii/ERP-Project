@@ -13,6 +13,7 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 
 
 	목차
+
 1.	개발환경
 2.	구현 기능
 3.	Database 모델링
@@ -82,6 +83,7 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
   
   
 4.	ERP 기능
+	
 	구매등록/ 판매등록
 
 ![image](https://user-images.githubusercontent.com/87827545/148508608-bd9a7c14-2a52-4085-a6b9-b7658f926bde.png)   ![image](https://user-images.githubusercontent.com/87827545/148508623-faec073c-5bd3-4c23-9ff8-d7208fa3b8ef.png)
