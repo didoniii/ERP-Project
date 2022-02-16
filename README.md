@@ -1,6 +1,6 @@
 # ERP-Project
 
-	ERP Program
+⚙	ERP Program
 ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 쉽게 말해 기업에서 사용하는 모든 자원을 관리하기 쉽도록 지원하는 시스템 전략입니다.
 회계/구매/경영/재고/판매/물류/생산/인사 등등 많은 자원 요소들이 있습니다.
