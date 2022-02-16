@@ -16,16 +16,16 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 🔔목차
 
 ①	개발환경
-⒉②	구현 기능
-3.	Database 모델링
-4.	ERP 기능
+②	구현 기능
+③	Database 모델링
+④	ERP 기능
 
 
 
 
 
 
-1.	개발환경
+①	개발환경
 	
 ✔	OS  :  MS Windows10
 
@@ -47,7 +47,7 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 
 
 
-2.	구현 기능
+②	구현 기능
 
 ❤	구매
    →	구매를 위한 구매처 등록
@@ -78,7 +78,7 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 
 
 
-3.	Database 모델링
+③	Database 모델링
 	
 	![image](https://user-images.githubusercontent.com/87827545/148508305-527814b1-e7b3-4b3d-a213-39ebbd91d1f7.png)
   
@@ -87,7 +87,7 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
   
   
   
-4.	ERP 기능
+④	ERP 기능
 	
 ❤	구매등록/ 판매등록
 
