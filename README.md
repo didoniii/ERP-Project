@@ -15,8 +15,8 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 
 🔔목차
 
-1.	개발환경
-2.	구현 기능
+①	개발환경
+⒉②	구현 기능
 3.	Database 모델링
 4.	ERP 기능
 
