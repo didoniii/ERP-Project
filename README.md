@@ -24,6 +24,7 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 
 
 
+
 1.	개발환경
 	
 ✔	OS  :  MS Windows10
@@ -39,6 +40,7 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 ✔	Framework  :  Mybatis
 
 ✔	Language  :  Java, JavaScript, html5/css3
+
 
 
 
@@ -75,9 +77,11 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 
 
 
+
 3.	Database 모델링
 	
 	![image](https://user-images.githubusercontent.com/87827545/148508305-527814b1-e7b3-4b3d-a213-39ebbd91d1f7.png)
+  
   
   
   
