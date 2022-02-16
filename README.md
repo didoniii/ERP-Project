@@ -9,8 +9,8 @@ ERP ( Enterprise Resource Planning ) : 전사적 자원관리의 약어.
 구축하는 ERP의 요소는 다릅니다.
 본 프로젝트에서는 유통회사의 ERP 프로그램을 개발하였습니다.
 
-
-
+				
+   
 
 
 🔔목차
